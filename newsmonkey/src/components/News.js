@@ -277,15 +277,12 @@ export class News extends Component {
       <div className='container my-3'>
         <h2>NewsMonkey- Top Headlines</h2>
         <div className="row">
-          <div className="col-md-4">
-          <NewsItems title="myTitle" description="myDesc" imageUrl="https://www.ft.com/__origami/service/image/v2/images/raw/https%253A%252F%252Fs3-ap-northeast-1.amazonaws.com%252Fpsh-ex-ftnikkei-3937bb4%252Fimages%252F3%252F0%252F7%252F5%252F45995703-1-eng-GB%252F2023-06-05T132235Z_1317585576_RC21D1ASX2KF_RTRMADP_3_UKRAINE-CRISIS-FREEDOM-OF-RUSSIA-LEGION.JPG?width=1260&height=630&fit=cover&gravity=faces&source=nar-cms"/>
-          </div>
-          <div className="col-md-4">
-          <NewsItems title="myTitle" description="myDesc"/>
-          </div>
-          <div className="col-md-4">
-          <NewsItems title="myTitle" description="myDesc"/>
-          </div>
+        {this.state.articles.map((element)=>{
+            return <div className="col-md-4" key={element.url}>
+                    <NewsItems title={element.title.slice(0,63)} description={element.description?.slice(0,78)}  imageUrl={element.urlToImage} newsUrl={element.url}/>
+                    </div>
+        })}
+
         </div>
       </div>
     )
