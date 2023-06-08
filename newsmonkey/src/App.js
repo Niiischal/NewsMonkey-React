@@ -6,12 +6,11 @@ export class App extends Component {
   static propTypes = {
 
   }
-
   render() {
     return (
       <div>
         <Navbar/>
-        <News pageSize={9}/>
+        <News pageSize={9} country="us" category="sports"/>
       </div>
     )
   }
