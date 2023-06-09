@@ -5,6 +5,7 @@ import {
 import Navbar from './components/Navbar';
 import News from './components/News';
 
+
 export class App extends Component {
   static propTypes = {
 
