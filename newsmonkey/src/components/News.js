@@ -10,14 +10,19 @@ export class News extends Component {
     pageSize: PropTypes.number,
     category: PropTypes.string
   }
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       articles: [],
       loading: false,
       page: 1,
     }
+    document.title=`NewsMonkey - ${this.capitalizeFirstLetter(this.props.category)} `
   }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
   async updateNews(){ // function to fetch content from the api and update as per requirement
     const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=90c71cea048a4c9f9714415dd37eb9cc&page=${this.state.page}&pageSize=${this.props.pageSize}`;
@@ -33,7 +38,7 @@ export class News extends Component {
     // let data = await fetch(url);
     // let parsedData = await data.json()
     // this.setState({articles: parsedData.articles, totalResults: parsedData.totalResults,loading:false})
-    this.updateNews()
+    this.updateNews();
   }
 
   handlePreviousClick = async ()=>{
