@@ -27,15 +27,18 @@ export class News extends Component {
 }
 
   async updateNews(){ // function to fetch content from the api and update as per requirement
+    this.props.setProgress(10);
     const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=90c71cea048a4c9f9714415dd37eb9cc&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({loading:true})
     let data = await fetch(url);// fetching the url
+    this.props.setProgress(30);
     let parsedData = await data.json()// waiting for it to change into json
+    this.props.setProgress(70);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading:false})
-
+    this.props.setProgress(100);
   }
 
   async componentDidMount(){  // it is invoked after all the elements of the page have been rendered correctly
