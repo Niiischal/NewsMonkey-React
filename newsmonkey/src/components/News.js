@@ -76,7 +76,7 @@ export class News extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <h1 className='text-center'>NewsMonkey- Top Headlines</h1>
+        <h1 className='text-center'>NewsMonkey- Top Headlines : {this.capitalizeFirstLetter(this.props.category)} </h1>
         {this.state.loading && <Spinner/>}
         <div className="row">
         {!this.state.loading && this.state.articles.map((element)=>{
